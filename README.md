@@ -52,10 +52,6 @@ Este projeto foi desenvolvido como parte do meu processo de aprendizado em **Flu
 └── widgets/
     └── post_card.dart      # Componente visual dos cards de post
 ```
- ## 📸 Demonstração
-
-![Demonstração da timeline com comentários](assets/timeline_demo.gif)
-
 
   ## 🛠️ Como executar
   1. Clone o repositório:
@@ -81,3 +77,8 @@ Este projeto foi desenvolvido como parte do meu processo de aprendizado em **Flu
   ## 👨‍💻 Autor
   Feito com 💙 por Keven Rodrigues - 
   GitHub: @keven-rdr
+
+  <h2>📸 Demonstração</h2>
+
+  <img src="https://github.com/keven-rdr/API_flutter/blob/main/statement_handle/assets/timeline_demo.gif?raw=true" width="300"/>
+

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:statement_handle/screens/post_detail/post_detail.dart';
 import '../screens/main_screen_tabs/mainTabs_screen.dart';
+
 
 enum AppRoute {
   tabs,
@@ -31,6 +31,5 @@ class AppRoutes {
 
   static final Map<String, WidgetBuilder> routes = {
     getRoute(AppRoute.tabs): (context) => MainTabsScreen(),
-    getRoute(AppRoute.postDetail): (context) => PostDetail(),
   };
 }

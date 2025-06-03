@@ -80,5 +80,8 @@ Este projeto foi desenvolvido como parte do meu processo de aprendizado em **Flu
 
   <h2>📸 Demonstração</h2>
 
+<div style="display: flex; gap: 400px;">
   <img src="https://github.com/keven-rdr/API_flutter/blob/main/statement_handle/assets/timeline_demo.gif?raw=true" width="300"/>
+  <img src="https://github.com/keven-rdr/API_flutter/blob/main/statement_handle/assets/timeline_demo2.gif?raw=true" width="294"/>
+</div>
 

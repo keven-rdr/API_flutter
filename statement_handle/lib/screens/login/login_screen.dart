@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('/netshirt.png', height: 80),
+            Image.asset('assets/netshirt.png', height: 80),
             const SizedBox(height: 50),
             ElevatedButton.icon(
               icon: const Icon(LucideIcons.log_in, color: Colors.white),

@@ -3,6 +3,7 @@ import 'package:flutter_lucide/flutter_lucide.dart';
 
 class CategoryIcons extends StatelessWidget {
   final List<String> categories;
+
   // Callback para notificar o widget pai quando uma categoria for clicada
   final ValueChanged<String> onCategorySelected;
 
@@ -24,11 +25,11 @@ class CategoryIcons extends StatelessWidget {
       case "women's clothing":
         return LucideIcons.spade;
       default:
-        return LucideIcons.tag; // Ícone padrão caso a categoria não seja encontrada
+        return LucideIcons
+            .tag;
     }
   }
 
-  // Função para capitalizar a primeira letra da categoria para exibição
   String _formatCategoryName(String name) {
     if (name.isEmpty) return "";
     return name[0].toUpperCase() + name.substring(1);
@@ -39,33 +40,35 @@ class CategoryIcons extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround, // Distribui os ícones igualmente
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: categories.map((category) {
           return InkWell(
             onTap: () => onCategorySelected(category),
             borderRadius: BorderRadius.circular(12),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(4.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Ícone
                   Icon(
                     _getIconForCategory(category),
-                    size: 30,
-                    color: Theme.of(context).colorScheme.primary,
+                    size: 24,
+                    color: Theme
+                        .of(context)
+                        .colorScheme
+                        .primary,
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
                   // Texto
                   SizedBox(
-                    width: 80, // Largura fixa para evitar quebra de linha
+                    width: 70,
                     child: Text(
                       _formatCategoryName(category),
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: 11),
                     ),
                   ),
                 ],

@@ -202,7 +202,7 @@ class MainsScreenState extends State<MainScreen> {
             : null,
         title: isFiltered
             ? Text(_selectedCategory![0].toUpperCase() + _selectedCategory!.substring(1))
-            : Image.asset('/netshirt.png', height: 40),
+            : Image.asset('assets/netshirt.png', height: 40),
         actions: const [
           CartIconWithBadge(),
         ],
@@ -281,7 +281,7 @@ class MainsScreenState extends State<MainScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         centerTitle: true,
-        title: Image.asset('/netshirt.png', height: 40),
+        title: Image.asset('assets/netshirt.png', height: 40),
         actions: const [CartIconWithBadge()],
       ),
       body: Center(
@@ -305,7 +305,7 @@ class MainsScreenState extends State<MainScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         centerTitle: true,
-        title: Image.asset('/netshirt.png', height: 40),
+        title: Image.asset('assets/netshirt.png', height: 40),
         actions: const [CartIconWithBadge()],
       ),
       body: const Center(

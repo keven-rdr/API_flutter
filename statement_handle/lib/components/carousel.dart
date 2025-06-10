@@ -10,10 +10,10 @@ class ImageCarousel extends StatefulWidget {
 class _ImageCarouselState extends State<ImageCarousel> {
   // Lista com os caminhos das suas imagens na pasta assets
   final List<String> _imagePaths = [
-    '/nav/ban1.webp',
-    '/nav/ban2.webp',
-    '/nav/ban3.webp',
-    '/nav/ban4.webp',
+    'assets/nav/ban1.webp',
+    'assets/nav/ban2.webp',
+    'assets/nav/ban3.webp',
+    'assets/nav/ban4.webp',
   ];
 
   late final PageController _pageController;

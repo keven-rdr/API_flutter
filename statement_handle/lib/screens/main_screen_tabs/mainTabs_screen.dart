@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
-
 import 'package:statement_handle/screens/main_screen/main_screen.dart';
 import 'package:statement_handle/screens/checkout/checkout_screen.dart';
+import 'package:statement_handle/screens/profile/profile_screen.dart'; // ✨ PASSO 1: IMPORTE A NOVA TELA ✨
 
 class MainTabsScreen extends StatefulWidget {
   const MainTabsScreen({super.key});
@@ -20,7 +20,8 @@ class _MainTabsScreenState extends State<MainTabsScreen> {
       MainScreen(key: ValueKey(_homeScreenKey)),
       const Center(child: Text('Buscar')),
       const CheckoutScreen(),
-      const Center(child: Text('Perfil')),
+      // ✨ PASSO 2: SUBSTITUA O PLACEHOLDER PELA TELA DE PERFIL ✨
+      const ProfileScreen(),
     ];
   }
 
@@ -36,7 +37,6 @@ class _MainTabsScreenState extends State<MainTabsScreen> {
     }
   }
 
-  // A lista de itens visuais do BottomNavigationBar não muda
   final List<BottomNavigationBarItem> _bottomItems = [
     const BottomNavigationBarItem(
       icon: Icon(LucideIcons.house),
@@ -55,7 +55,6 @@ class _MainTabsScreenState extends State<MainTabsScreen> {
       label: 'Perfil',
     ),
   ];
-
 
   @override
   Widget build(BuildContext context) {

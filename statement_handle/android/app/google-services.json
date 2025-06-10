@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1032208386660",
+    "project_id": "apiflutter-cc84a",
+    "storage_bucket": "apiflutter-cc84a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032208386660:android:4fb37c4e07139b3e89ad71",
+        "android_client_info": {
+          "package_name": "com.example.statement_handle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032208386660-a2v580fcpvjel90r48i4cqtju2vog6v9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRewQdQSY7acuVhLOFDLsa6mpNWNJehYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032208386660-a2v580fcpvjel90r48i4cqtju2vog6v9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

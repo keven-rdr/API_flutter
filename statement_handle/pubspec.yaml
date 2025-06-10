@@ -43,6 +43,11 @@ dev_dependencies:
     sdk: flutter
   provider: ^6.1.2
 
+  # Pacotes do Firebase
+  firebase_core: ^2.32.0   # Núcleo do Firebase
+  firebase_auth: ^4.20.0  # Autenticação do Firebase
+  google_sign_in: ^6.2.1  # Plugin para o fluxo de login do Google
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

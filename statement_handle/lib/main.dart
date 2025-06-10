@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:statement_handle/firebase_options.dart';
+import 'package:statement_handle/viewmodels/cart_viewmodel.dart';
 import 'package:statement_handle/screens/main_screen_tabs/mainTabs_screen.dart';
 import 'package:statement_handle/utils/app_colors.dart';
-import 'package:statement_handle/viewmodels/cart_viewmodel.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => CartViewModel(),
@@ -37,4 +44,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

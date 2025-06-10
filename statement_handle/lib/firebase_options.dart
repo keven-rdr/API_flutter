@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -31,7 +32,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
@@ -40,51 +41,51 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA4_qTkVn2UIU_X9OBi_uc7NEVQcNcg_tg',
-    appId: '1:1032208386660:web:a01c5a1a2e127ca789ad71',
-    messagingSenderId: '1032208386660',
-    projectId: 'apiflutter-cc84a',
-    authDomain: 'apiflutter-cc84a.firebaseapp.com',
-    storageBucket: 'apiflutter-cc84a.firebasestorage.app',
-    measurementId: 'G-BJFTCM3L47',
+  static FirebaseOptions web = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_WEB_API_KEY']!,
+    appId: dotenv.env['FIREBASE_WEB_APP_ID']!,
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID']!,
+    projectId: dotenv.env['FIREBASE_PROJECT_ID']!,
+    authDomain: dotenv.env['FIREBASE_WEB_AUTH_DOMAIN']!,
+    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET']!,
+    measurementId: dotenv.env['FIREBASE_WEB_MEASUREMENT_ID']!,
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDRewQdQSY7acuVhLOFDLsa6mpNWNJehYo',
-    appId: '1:1032208386660:android:4fb37c4e07139b3e89ad71',
-    messagingSenderId: '1032208386660',
-    projectId: 'apiflutter-cc84a',
-    storageBucket: 'apiflutter-cc84a.firebasestorage.app',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_ANDROID_API_KEY']!,
+    appId: dotenv.env['FIREBASE_ANDROID_APP_ID']!,
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID']!, // Comum a várias plataformas
+    projectId: dotenv.env['FIREBASE_PROJECT_ID']!, // Comum a várias plataformas
+    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET']!, // Comum a várias plataformas
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBpkwV4NmWd3gmqyB9TSLnBIFm_5V-EE2U',
-    appId: '1:1032208386660:ios:da55d909e3a38aec89ad71',
-    messagingSenderId: '1032208386660',
-    projectId: 'apiflutter-cc84a',
-    storageBucket: 'apiflutter-cc84a.firebasestorage.app',
-    iosClientId: '1032208386660-0ifnsh9v5dkl321e7putvo5t90h4i6l7.apps.googleusercontent.com',
-    iosBundleId: 'com.example.statementHandle',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY']!,
+    appId: dotenv.env['FIREBASE_IOS_APP_ID']!,
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID']!, // Comum a várias plataformas
+    projectId: dotenv.env['FIREBASE_PROJECT_ID']!, // Comum a várias plataformas
+    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET']!, // Comum a várias plataformas
+    iosClientId: dotenv.env['FIREBASE_IOS_CLIENT_ID']!,
+    iosBundleId: dotenv.env['FIREBASE_IOS_BUNDLE_ID']!,
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBpkwV4NmWd3gmqyB9TSLnBIFm_5V-EE2U',
-    appId: '1:1032208386660:ios:da55d909e3a38aec89ad71',
-    messagingSenderId: '1032208386660',
-    projectId: 'apiflutter-cc84a',
-    storageBucket: 'apiflutter-cc84a.firebasestorage.app',
-    iosClientId: '1032208386660-0ifnsh9v5dkl321e7putvo5t90h4i6l7.apps.googleusercontent.com',
-    iosBundleId: 'com.example.statementHandle',
+  static FirebaseOptions macos = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_MACOS_API_KEY']!,
+    appId: dotenv.env['FIREBASE_MACOS_APP_ID']!,
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID']!, // Comum a várias plataformas
+    projectId: dotenv.env['FIREBASE_PROJECT_ID']!, // Comum a várias plataformas
+    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET']!, // Comum a várias plataformas
+    iosClientId: dotenv.env['FIREBASE_MACOS_CLIENT_ID']!,
+    iosBundleId: dotenv.env['FIREBASE_MACOS_BUNDLE_ID']!,
   );
 
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyA4_qTkVn2UIU_X9OBi_uc7NEVQcNcg_tg',
-    appId: '1:1032208386660:web:cb8f89e0f5a1162789ad71',
-    messagingSenderId: '1032208386660',
-    projectId: 'apiflutter-cc84a',
-    authDomain: 'apiflutter-cc84a.firebaseapp.com',
-    storageBucket: 'apiflutter-cc84a.firebasestorage.app',
-    measurementId: 'G-4SJXC3PDLC',
+  static FirebaseOptions windows = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_WINDOWS_API_KEY']!,
+    appId: dotenv.env['FIREBASE_WINDOWS_APP_ID']!,
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID']!, // Comum a várias plataformas
+    projectId: dotenv.env['FIREBASE_PROJECT_ID']!, // Comum a várias plataformas
+    authDomain: dotenv.env['FIREBASE_WINDOWS_AUTH_DOMAIN']!,
+    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET']!, // Comum a várias plataformas
+    measurementId: dotenv.env['FIREBASE_WINDOWS_MEASUREMENT_ID']!,
   );
 }

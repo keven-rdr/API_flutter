@@ -20,6 +20,8 @@ migrate_working_dir/
 .idea/
 ../.idea/
 
+# Arquivos de ambiente
+.env.prod
 
 
 # The .vscode folder contains launch configuration and tasks you configure in

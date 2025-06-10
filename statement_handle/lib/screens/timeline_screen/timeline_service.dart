@@ -5,7 +5,7 @@ import '../../models/comment.dart';
 
 class TimelineService {
   static Future<ApiResponse<List<Post>>> loadTimeline() async {
-    final url = "https://jsonplaceholder.typicode.com/posts";
+    const url = "https://fakestoreapi.com/products";
     return await ApiService.request<List<Post>>(
       url: url,
       verb: HttpVerb.get,
@@ -23,6 +23,16 @@ class TimelineService {
       fromJson: (json) => (json as List)
           .map((item) => Comment.fromJson(item))
           .toList(),
+    );
+  }
+
+  static Future<ApiResponse<List<String>>> loadCategories() async {
+    const url = "https://fakestoreapi.com/products/categories";
+    return await ApiService.request<List<String>>(
+      url: url,
+      verb: HttpVerb.get,
+      // A API retorna uma lista de strings diretamente
+      fromJson: (json) => List<String>.from(json),
     );
   }
 }

@@ -1,38 +1,40 @@
 class Post {
-  final int userId;
   final int id;
   final String title;
   final String body;
+  final String image;
+  final double price;
 
   Post({
-    required this.userId,
     required this.id,
     required this.title,
     required this.body,
+    required this.image,
+    required this.price,
   });
 
-  // Construtor a partir de JSON
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
-      userId: json['userId'],
       id: json['id'],
       title: json['title'],
-      body: json['body'],
+      body: json['description'],
+      image: json['image'],
+      price: (json['price'] as num).toDouble(),
     );
   }
 
-  // Metodo para converter o objeto para JSON
   Map<String, dynamic> toJson() {
     return {
-      'userId': userId,
       'id': id,
       'title': title,
       'body': body,
+      'image': image,
+      'price': price,
     };
   }
 
   @override
-  String toString(){
-    return "Titulo: $title\ntexto: $body \n\n\n";
+  String toString() {
+    return "Título: $title\nTexto: $body\nPreço: R\$ ${price.toStringAsFixed(2)}\n";
   }
 }

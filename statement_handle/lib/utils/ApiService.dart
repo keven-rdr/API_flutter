@@ -33,7 +33,7 @@ class ApiService { //Static não precisa do metodo para instanciar
     try {
       switch (verb) {
         case HttpVerb.get:
-          response = await http.get(Uri.parse(url), headers: defaultHeaders);//Não preceisa esperar(await)
+          response = await http.get(Uri.parse(url), headers: defaultHeaders);
           break;
         case HttpVerb.post:
           response = await http.post(

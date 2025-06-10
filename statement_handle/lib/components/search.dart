@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:statement_handle/models/post.dart';
 
 class SearchComponent extends StatelessWidget {
@@ -38,9 +39,9 @@ class SearchComponent extends StatelessWidget {
             focusNode: focusNode,
             decoration: const InputDecoration(
               hintText: 'Buscar produto...',
-              prefixIcon: Icon(Icons.search),
+              prefixIcon: Icon(LucideIcons.search),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                borderRadius: BorderRadius.all(Radius.circular(3.0)),
               ),
             ),
           );

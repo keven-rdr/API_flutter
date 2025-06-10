@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:statement_handle/screens/main_screen_tabs/mainTabs_screen.dart';
 import 'package:statement_handle/utils/app_colors.dart';
+import 'package:statement_handle/viewmodels/cart_viewmodel.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CartViewModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -30,3 +37,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

@@ -21,36 +21,44 @@ class PostCard extends StatelessWidget {
       },
       child: Card(
         color: AppColors.cardBackground,
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.network(post.image, height: 60, width: 60, fit: BoxFit.cover),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(post.title, style: Theme.of(context).textTheme.titleMedium),
-                    const SizedBox(height: 8),
-
-                    Text(
-                      post.body.length > 100
-                          ? '${post.body.substring(0, 100)}...'
-                          : post.body,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 8),
-                    Text("R\$ ${post.price.toStringAsFixed(2)}",
-                        style: const TextStyle(fontWeight: FontWeight.bold)),
-                  ],
-                ),
+        clipBehavior: Clip.antiAlias, // Garante que os cantos arredondados cortem a imagem
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Imagem do produto ocupando a parte de cima
+            AspectRatio(
+              aspectRatio: 1 / 1, // Deixa a imagem quadrada
+              child: Image.network(
+                post.image,
+                fit: BoxFit.cover,
               ),
-            ],
-          ),
+            ),
+            // Padding para o conteúdo de texto
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Título do produto
+                  Text(
+                    post.title,
+                    style: Theme.of(context).textTheme.bodySmall,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 8),
+                  // Preço do produto
+                  Text(
+                    "R\$ ${post.price.toStringAsFixed(2)}",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 
 import 'package:statement_handle/screens/main_screen/main_screen.dart';
+import 'package:statement_handle/screens/checkout/checkout_screen.dart';
 
 class MainTabsScreen extends StatefulWidget {
   const MainTabsScreen({super.key});
@@ -12,35 +13,44 @@ class MainTabsScreen extends StatefulWidget {
 
 class _MainTabsScreenState extends State<MainTabsScreen> {
   int _selectedIndex = 0;
+  int _homeScreenKey = 0;
 
-  final List<Widget> _screens = [
-    MainScreen(),
-    Center(child: Text('Buscar')),
-    Center(child: Text('Compras')),
-    Center(child: Text('Perfil')),
-  ];
-
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  List<Widget> _buildScreens() {
+    return [
+      MainScreen(key: ValueKey(_homeScreenKey)),
+      const Center(child: Text('Buscar')),
+      const CheckoutScreen(),
+      const Center(child: Text('Perfil')),
+    ];
   }
 
+  void _onItemTapped(int index) {
+    if (index == 0 && _selectedIndex == index) {
+      setState(() {
+        _homeScreenKey++;
+      });
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+  }
+
+  // A lista de itens visuais do BottomNavigationBar não muda
   final List<BottomNavigationBarItem> _bottomItems = [
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Icon(LucideIcons.house),
       label: 'Timeline',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Icon(LucideIcons.search),
       label: 'Buscar',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Icon(LucideIcons.shopping_bag),
       label: 'Compras',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Icon(LucideIcons.user),
       label: 'Perfil',
     ),
@@ -49,8 +59,10 @@ class _MainTabsScreenState extends State<MainTabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screens = _buildScreens();
+
     return Scaffold(
-      body: _screens[_selectedIndex],
+      body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

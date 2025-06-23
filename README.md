@@ -1,6 +1,6 @@
 # 📱 API Flutter - Estudo com API gratuitas
 
-Este projeto foi desenvolvido como parte do meu processo de aprendizado em **Flutter** e **Dart**, com foco no desenvolvimento **frontend mobile**. A aplicação simula uma **timeline interativa**, consumindo dados da [API JSONPlaceholder](https://jsonplaceholder.typicode.com/), uma API pública gratuita para testes.
+Este projeto foi desenvolvido como parte do meu processo de aprendizado em **Flutter** e **Dart**, com foco no desenvolvimento **frontend mobile**. A aplicação simula uma **timeline interativa**, ela inicialmente consumia dados da [API JSONPlaceholder](https://jsonplaceholder.typicode.com/), uma API pública gratuita para testes, acabei alterando para a API [Fake Store API](https://fakestoreapi.com/), que simula uma loja e-commerce.
 
 ---
 

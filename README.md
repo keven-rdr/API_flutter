@@ -73,10 +73,7 @@ Este projeto foi desenvolvido como parte do meu processo de aprendizado em **Flu
   ## Observações
   - Este projeto não utiliza backend próprio. Todos os dados vêm da API pública JSONPlaceholder.
   - O foco foi aprender boas práticas no frontend Flutter: componentização, requisições HTTP, organização de arquivos e controle de rotas.
-    
-  ## 👨‍💻 Autor
-  Feito com 💙 por Keven Rodrigues - 
-  GitHub: @keven-rdr
+
 
   <h2>📸 Demonstração</h2>
 

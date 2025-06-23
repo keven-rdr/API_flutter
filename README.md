@@ -22,7 +22,7 @@ Este projeto foi desenvolvido como parte do meu processo de aprendizado em **Flu
 
 - Flutter 3.7.2
 - Dart
-- JSONPlaceholder (API REST fake)
+- Fakestoreapi (API REST fake)
 - http package para chamadas HTTP
 - lucide_icons para ícones vetoriais modernos
 

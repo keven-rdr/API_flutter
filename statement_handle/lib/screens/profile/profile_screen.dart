@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
-import 'package:statement_handle/screens/login/login_screen.dart'; // Importa a tela de login
+import 'package:statement_handle/screens/login/login_screen.dart';
 import 'package:statement_handle/services/auth_service.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -9,17 +9,32 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final User? currentUser = FirebaseAuth.instance.currentUser;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Meu Perfil"),
         automaticallyImplyLeading: false,
       ),
-      // A UI agora depende se o usuário está logado ou não
-      body: currentUser != null
-          ? _buildLoggedInView(context, currentUser)
-          : _buildGuestView(context),
+      // Envolvemos o corpo da tela com um StreamBuilder
+      body: StreamBuilder<User?>(
+        // O stream 'authStateChanges' notifica sobre qualquer mudança de autenticação
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          // Enquanto espera pela informação, exibe um loader
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          // Se o snapshot tem dados, significa que o usuário está logado
+          if (snapshot.hasData) {
+            // Usamos o usuário do snapshot, que está sempre atualizado
+            final user = snapshot.data!;
+            return _buildLoggedInView(context, user);
+          }
+
+          // Se não há dados, o usuário não está logado
+          return _buildGuestView(context);
+        },
+      ),
     );
   }
 

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:statement_handle/screens/main_screen/main_screen.dart';
 import 'package:statement_handle/screens/checkout/checkout_screen.dart';
-import 'package:statement_handle/screens/profile/profile_screen.dart'; // ✨ PASSO 1: IMPORTE A NOVA TELA ✨
+import 'package:statement_handle/screens/profile/profile_screen.dart';
+import 'package:statement_handle/screens/favorites/favorites_screen.dart';
 
 class MainTabsScreen extends StatefulWidget {
   const MainTabsScreen({super.key});
@@ -18,9 +19,8 @@ class _MainTabsScreenState extends State<MainTabsScreen> {
   List<Widget> _buildScreens() {
     return [
       MainScreen(key: ValueKey(_homeScreenKey)),
-      const Center(child: Text('Buscar')),
+      const FavoritesScreen(),
       const CheckoutScreen(),
-      // ✨ PASSO 2: SUBSTITUA O PLACEHOLDER PELA TELA DE PERFIL ✨
       const ProfileScreen(),
     ];
   }
@@ -43,8 +43,8 @@ class _MainTabsScreenState extends State<MainTabsScreen> {
       label: 'Timeline',
     ),
     const BottomNavigationBarItem(
-      icon: Icon(LucideIcons.search),
-      label: 'Buscar',
+      icon: Icon(LucideIcons.heart),
+      label: 'Favoritos',
     ),
     const BottomNavigationBarItem(
       icon: Icon(LucideIcons.shopping_bag),

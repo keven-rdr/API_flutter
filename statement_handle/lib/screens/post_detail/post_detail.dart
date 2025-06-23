@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:provider/provider.dart';
 import 'package:statement_handle/models/post.dart';
-import 'package:statement_handle/screens/checkout/checkout_screen.dart'; // Importa a nova tela
+import 'package:statement_handle/screens/checkout/checkout_screen.dart';
+import 'package:statement_handle/viewmodels/favorites_viewmodel.dart';
 import '../../components/cart_modal.dart';
 import '../../viewmodels/cart_viewmodel.dart';
 import 'post_detail_viewmodel.dart';
@@ -16,7 +17,6 @@ class PostDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => PostDetailViewModel()..fetchProductDetails(post.id),
-      // O Consumer agora envolve o Scaffold para que o bottomNavigationBar tenha acesso ao 'viewModel'
       child: Consumer<PostDetailViewModel>(
         builder: (context, viewModel, child) {
           return Scaffold(
@@ -27,11 +27,7 @@ class PostDetail extends StatelessWidget {
               ),
               title: Text(viewModel.detailedPost?.title ?? "Detalhes"),
             ),
-            // O corpo da tela continua o mesmo, apenas usando o viewModel que já está disponível
             body: _buildBody(context, viewModel),
-
-            // ✨ BARRA DE RODAPÉ FIXA ADICIONADA AQUI ✨
-            // Só mostra a barra se o produto tiver carregado com sucesso
             bottomNavigationBar: viewModel.pageState == PageState.success
                 ? _buildBottomBar(context, viewModel.detailedPost!)
                 : null,
@@ -41,7 +37,6 @@ class PostDetail extends StatelessWidget {
     );
   }
 
-  // O corpo da tela agora recebe o viewModel para construir a UI
   Widget _buildBody(BuildContext context, PostDetailViewModel viewModel) {
     switch (viewModel.pageState) {
       case PageState.loading:
@@ -56,7 +51,6 @@ class PostDetail extends StatelessWidget {
     }
   }
 
-  // Novo widget para construir a barra de rodapé
   Widget _buildBottomBar(BuildContext context, Post post) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -72,14 +66,13 @@ class PostDetail extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Imagem e Preço
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(post.image, width: 50, height: 50, fit: BoxFit.cover),
           ),
           const SizedBox(width: 12),
           Column(
-            mainAxisSize: MainAxisSize.min, // Faz a coluna ter o tamanho mínimo necessário
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
@@ -92,9 +85,7 @@ class PostDetail extends StatelessWidget {
               ),
             ],
           ),
-          const Spacer(), // Ocupa o espaço vazio e empurra o botão para a direita
-
-          // Botão Comprar
+          const Spacer(),
           ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -115,9 +106,7 @@ class PostDetail extends StatelessWidget {
     );
   }
 
-  // As funções _buildErrorUI e _buildSuccessUI continuam as mesmas
   Widget _buildErrorUI(BuildContext context, PostDetailViewModel viewModel) {
-    // ... (código da função de erro que você já tem)
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -134,7 +123,6 @@ class PostDetail extends StatelessWidget {
   }
 
   Widget _buildSuccessUI(BuildContext context, Post post) {
-    // ... (código da função de sucesso que você já tem)
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,12 +145,33 @@ class PostDetail extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Text(
-                  "R\$ ${post.price.toStringAsFixed(2)}",
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    color: Colors.green.shade700,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "R\$ ${post.price.toStringAsFixed(2)}",
+                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        color: Colors.green.shade700,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Consumer<FavoritesViewModel>(
+                      builder: (context, favoritesViewModel, child) {
+                        final isFavorited = favoritesViewModel.isFavorite(post.id);
+                        return IconButton(
+                          icon: Icon(
+                            LucideIcons.heart,
+                            color: isFavorited ? Colors.red : Colors.grey,
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            favoritesViewModel.toggleFavorite(post);
+                          },
+                        );
+                      },
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 24),
                 Text(
@@ -179,7 +188,6 @@ class PostDetail extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton.icon(
@@ -206,8 +214,6 @@ class PostDetail extends StatelessWidget {
                     ),
                   ),
                 )
-
-
               ],
             ),
           ),

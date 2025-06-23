@@ -1,4 +1,4 @@
-# 📱 API Flutter - Estudo com JSONPlaceholder
+# 📱 API Flutter - Estudo com API gratuitas
 
 Este projeto foi desenvolvido como parte do meu processo de aprendizado em **Flutter** e **Dart**, com foco no desenvolvimento **frontend mobile**. A aplicação simula uma **timeline interativa**, consumindo dados da [API JSONPlaceholder](https://jsonplaceholder.typicode.com/), uma API pública gratuita para testes.
 
